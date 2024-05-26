@@ -1,9 +1,7 @@
 package pl.edu.pja.demo.tpo_10_lab.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 import pl.edu.pja.demo.tpo_10_lab.model.ShortenedUrl;
 
-public interface ShortenedUrlRepository extends JpaRepository<ShortenedUrl, Integer> {
-
-    ShortenedUrl findByShortUrl(String shortUrl);
+public interface ShortenedUrlRepository extends CrudRepository<ShortenedUrl, String> {
 }

@@ -1,26 +1,18 @@
 package pl.edu.pja.demo.tpo_10_lab.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
-@Entity
-public class ShortenedUrl {
-
-    @Id
+public class GetShortenedUrlResponseDto {
     private String id;
     private String name;
     private String targetUrl;
     private String redirectUrl;
-    private String password;
     private int visits;
 
     public String getId() {
         return id;
     }
 
-    public void setId(String shortUrl) {
-        this.id = shortUrl;
-        setRedirectUrl("http://localhost:8080/red/" + shortUrl);
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -43,16 +35,8 @@ public class ShortenedUrl {
         return redirectUrl;
     }
 
-    private void setRedirectUrl(String redirectUrl) {
+    public void setRedirectUrl(String redirectUrl) {
         this.redirectUrl = redirectUrl;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public int getVisits() {

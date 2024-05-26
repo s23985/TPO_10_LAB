@@ -1,12 +1,7 @@
 package pl.edu.pja.demo.tpo_10_lab.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-
-@Entity
-public class ShortenedUrl {
-
-    @Id
+public class ShortenedUrlDto {
+    
     private String id;
     private String name;
     private String targetUrl;
