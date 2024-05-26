@@ -53,8 +53,11 @@ public class UrlShorteningService {
                 .orElseThrow();
         ShortenedUrlDto patchedShortenedUrlDto = applyPatch(shortenedUrlDto, patch);
         
-        // TODO: This won't work
-        if (!shortenedUrlDto.getPassword().equals(patchedShortenedUrlDto.getPassword())) {
+        ShortenedUrlDto changesInPatch = applyPatch(new ShortenedUrlDto(), patch);
+        
+        if (shortenedUrlDto.getPassword() == null 
+                || shortenedUrlDto.getPassword().isEmpty() 
+                || !shortenedUrlDto.getPassword().equals(changesInPatch.getPassword())) {
             throw new Exception("Wrong password");
         }
 
@@ -68,7 +71,9 @@ public class UrlShorteningService {
     public void deleteShortenedUrl(String shortUrl, String password) throws Exception {
         ShortenedUrl shortenedUrl = repository.findById(shortUrl).orElseThrow();
 
-        if ((shortenedUrl.getPassword() == null) || shortenedUrl.getPassword().isEmpty() || !shortenedUrl.getPassword().equals(password)) {
+        if (shortenedUrl.getPassword() == null 
+                || shortenedUrl.getPassword().isEmpty() 
+                || !shortenedUrl.getPassword().equals(password)) {
             throw new Exception("Wrong password");
         }
         
